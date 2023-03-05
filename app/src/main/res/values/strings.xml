@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Mandi</string>
+    <string name="selling_fragment">Mandi - Let\'s Purchase</string>
+
+    <!-- SellingFragment -->
+    <string name="seller_name">Seller name</string>
+    <string name="seller_name_hint">Enter seller name</string>
+    <string name="loyalty_card_identifier">Loyalty card identifier</string>
+    <string name="loyalty_card_identifier_hint">(e.g S12345)</string>
+    <string name="village">Village</string>
+    <string name="village_hint">Select village</string>
+    <string name="gross_weight">Gross weight</string>
+    <string name="gross_weight_hint">Enter weight in Kg</string>
+    <string name="select_village">Select Village</string>
+    <string name="search">Search</string>
+    <string name="gross_price">Gross Price</string>
+    <string name="sell_my_produce">Sell My Produce</string>
+    <string name="gross_price_value">%1$s INR</string>
+    <string name="loyalty_index">Applied loyalty index : %1$s</string>
+
+
+    <string name="lorem_ipsum">Lorum Ipsum</string>
+
+</resources>
