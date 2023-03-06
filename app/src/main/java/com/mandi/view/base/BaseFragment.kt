@@ -2,6 +2,7 @@ package com.mandi.view.base
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -59,6 +60,12 @@ abstract class BaseFragment : Fragment() {
                     function.invoke(it)
                 }
             }
+        }
+    }
+
+    fun provideStringsToViewModel(viewModel: BaseViewModel, @StringRes vararg resources: Int) {
+        resources.forEach {
+            viewModel.putLocalString(it, getString(it))
         }
     }
 }

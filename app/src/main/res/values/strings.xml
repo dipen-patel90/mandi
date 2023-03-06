@@ -23,5 +23,9 @@
     <string name="amount_currency">%1$.2f INR</string>
 
     <string name="lorem_ipsum">Lorum Ipsum</string>
+    <string name="please_enter_seller_name">Please enter seller name</string>
+    <string name="loyalty_card_number_invalid">Loyalty card number is invalid. Please enter correct card number.</string>
+    <string name="please_select_village">Please select village</string>
+    <string name="please_enter_gross_weight">Please enter gross weight</string>
 
 </resources>

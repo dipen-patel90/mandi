@@ -27,6 +27,7 @@ class SellingFragment : BaseFragment() {
     private val viewModel: SellingViewModel by viewModels()
 
     private val sellerAdapter by lazy {
+        // TODO Replace with custom adapter and show only selected name instead of name and card number
         ArrayAdapter(
             requireContext(),
             android.R.layout.simple_dropdown_item_1line, arrayListOf<Seller>()
@@ -56,6 +57,14 @@ class SellingFragment : BaseFragment() {
 
     // region - base class methods
     override fun initViews() {
+        provideStringsToViewModel(
+            viewModel,
+            R.string.please_enter_seller_name,
+            R.string.loyalty_card_number_invalid,
+            R.string.please_select_village,
+            R.string.please_enter_gross_weight
+        )
+
         binding.apply {
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner

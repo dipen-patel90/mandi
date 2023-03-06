@@ -1,5 +1,6 @@
 package com.mandi.viewmodel
 
+import com.mandi.R
 import com.mandi.common.Const.CARD_HOLDER_INDEX
 import com.mandi.common.Const.NON_CARD_HOLDER_INDEX
 import com.mandi.common.UIField
@@ -156,7 +157,7 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
         uiSellerName.update {
             uiSellerName.value.copy(
                 hasError = sellerNameError,
-                errorMessage = "Please enter seller name"
+                errorMessage = getLocalString(R.string.please_enter_seller_name)
             )
         }
 
@@ -170,7 +171,7 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
         uiLoyaltyCard.update {
             uiLoyaltyCard.value.copy(
                 hasError = loyaltyError,
-                errorMessage = "Loyalty card number is invalid. Please enter correct card number."
+                errorMessage = getLocalString(R.string.loyalty_card_number_invalid)
             )
         }
 
@@ -178,7 +179,7 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
         uiVillage.update {
             uiVillage.value.copy(
                 hasError = villageError,
-                errorMessage = "Please select village"
+                errorMessage = getLocalString(R.string.please_select_village)
             )
         }
 
@@ -186,7 +187,7 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
         uiWeight.update {
             uiWeight.value.copy(
                 hasError = weightError,
-                errorMessage = "Please enter gross weight"
+                errorMessage = getLocalString(R.string.please_enter_gross_weight)
             )
         }
 
