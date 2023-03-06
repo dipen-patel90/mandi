@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.SellingFragment">
 
     <data>
 
+        <variable
+            name="itemName"
+            type="String" />
 
+        <variable
+            name="itemPrice"
+            type="Double" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/item_name"
-            android:layout_width="match_parent"
+            android:id="@+id/item_name_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:minHeight="@dimen/dp_48"
             android:padding="@dimen/dp_8"
-            android:text="@string/lorem_ipsum" />
+            android:text="@{itemName}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/dp_48"
+            android:padding="@dimen/dp_8"
+            android:text="@{@string/amount_currency(itemPrice)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="@dimen/dp_1"
+            app:layout_constraintTop_toBottomOf="@+id/item_name_tv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

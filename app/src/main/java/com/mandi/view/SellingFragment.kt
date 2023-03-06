@@ -94,6 +94,14 @@ class SellingFragment : BaseFragment() {
 
     override fun collectFlow() {
         binding.apply {
+            collectFlow(viewModel.progressCount) {
+                if (it > 0) {
+                    progressBar.show()
+                } else {
+                    progressBar.hide()
+                }
+            }
+
             collectFlow(viewModel.sellerList) {
                 sellerAdapter.addAll(it)
                 sellerName.editText.setAdapter(sellerAdapter)

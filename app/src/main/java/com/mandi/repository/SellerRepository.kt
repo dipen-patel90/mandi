@@ -9,10 +9,12 @@ import kotlinx.coroutines.delay
 class SellerRepository {
 
     suspend fun getVillageList(): List<Village> {
+        delay(1000) // Dummy delay
         return DummyData.villages
     }
 
     suspend fun getSellerList(): List<Seller> {
+        delay(1000) // Dummy delay
         return DummyData.sellers
     }
 
@@ -21,7 +23,7 @@ class SellerRepository {
         price: String,
         weight: String
     ): SellMyProduceResponse {
-        delay(1000)
+        delay(1000) // Dummy delay
         return SellMyProduceResponse(seller, price, weight)
     }
 }

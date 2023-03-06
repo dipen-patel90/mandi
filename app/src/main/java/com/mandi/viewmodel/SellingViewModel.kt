@@ -1,41 +1,46 @@
 package com.mandi.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.mandi.common.Const.CARD_HOLDER_INDEX
+import com.mandi.common.Const.NON_CARD_HOLDER_INDEX
 import com.mandi.common.UIField
 import com.mandi.extention.empty
 import com.mandi.model.SellMyProduceResponse
 import com.mandi.model.Seller
 import com.mandi.model.Village
 import com.mandi.repository.SellerRepository
+import com.mandi.view.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SellingViewModel @Inject constructor(private val sellerRepository: SellerRepository) :
-    ViewModel() {
+    BaseViewModel() {
 
 
     // region - API Calls
     private val _sellerList = MutableStateFlow<List<Seller>>(listOf())
     val sellerList = _sellerList.asStateFlow()
 
-    private fun getSellerList() = viewModelScope.launch {
+    private fun getSellerList() = launchWithViewModelScope(call = {
+        startLoading()
         _sellerList.emit(sellerRepository.getSellerList())
-    }
+        stopLoading()
+    }, exceptionCallback = { stopLoading() })
 
     private val _villageList = MutableStateFlow<List<Village>>(listOf())
     val villageList = _villageList.asStateFlow()
 
-    private fun getVillageList() = viewModelScope.launch {
+    private fun getVillageList() = launchWithViewModelScope(call = {
+        startLoading()
         _villageList.emit(sellerRepository.getVillageList())
-    }
+        stopLoading()
+    }, exceptionCallback = { stopLoading() })
 
     private val _completeSellResponse = MutableSharedFlow<SellMyProduceResponse>()
     val completeSellResponse = _completeSellResponse.asSharedFlow()
-    private fun completeSell() = viewModelScope.launch {
+    private fun completeSell() = launchWithViewModelScope(call = {
+        startLoading()
         _completeSellResponse.emit(
             sellerRepository.completeSell(
                 uiSellerName.value.state.value,
@@ -43,7 +48,8 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
                 uiWeight.value.state.value
             )
         )
-    }
+        stopLoading()
+    }, exceptionCallback = { stopLoading() })
     // endregion - API Calls
 
     // region - Form fields
@@ -110,7 +116,8 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
         uiWeight.value.state,
     ) { card, village, weight ->
 
-        val appliedLoyaltyIndex = if (selectedSeller?.cardId?.isNotEmpty() == true) 1.12 else 0.98
+        val appliedLoyaltyIndex =
+            if (selectedSeller?.cardId?.isNotEmpty() == true) CARD_HOLDER_INDEX else NON_CARD_HOLDER_INDEX
         uiLoyaltyIndex.update { appliedLoyaltyIndex.toString() }
 
         if (village.isNotEmpty() && weight.isNotEmpty()) {
@@ -153,11 +160,10 @@ class SellingViewModel @Inject constructor(private val sellerRepository: SellerR
             )
         }
 
-        val cardNumber = card
         val loyaltyError =
-            cardNumber.isNotEmpty() && _sellerList.value.firstOrNull {
+            card.isNotEmpty() && _sellerList.value.firstOrNull {
                 it.cardId.equals(
-                    cardNumber,
+                    card,
                     ignoreCase = true
                 )
             } == null

@@ -16,7 +16,8 @@ class SingleSelectionAdapter(private val onItemSelected: (item: Village) -> Unit
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Village) {
-            binding.itemName.text = item.name
+            binding.itemName = item.name
+            binding.itemPrice = item.price
         }
     }
 
