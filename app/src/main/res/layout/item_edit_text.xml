@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="title"
             type="String" />
@@ -19,8 +21,8 @@
             type="Integer" />
 
         <variable
-            name="state"
-            type="kotlinx.coroutines.flow.MutableStateFlow&lt;String>" />
+            name="uiField"
+            type="com.mandi.common.UIField" />
     </data>
 
     <merge
@@ -44,7 +46,10 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/dp_8"
                     android:text="@{title}"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="italic"
                     tools:text="@string/lorem_ipsum" />
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -54,9 +59,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_12"
                     android:hint="@{hint}"
-                    android:text="@={state}"
+                    android:text="@={uiField.state}"
                     app:bindDrawableEndCompat="@{drawableEnd}"
                     tools:hint="@string/lorem_ipsum" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{uiField.errorMessage}"
+                    android:textColor="@color/error_red"
+                    android:visibility="@{uiField.hasError ? View.VISIBLE : View.GONE}"
+                    tools:text="@string/lorem_ipsum" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>
     </merge>

@@ -20,6 +20,8 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:fillViewport="true"
+            android:isScrollContainer="true"
             android:paddingHorizontal="@dimen/dp_20"
             app:layout_constraintBottom_toTopOf="@+id/footer"
             app:layout_constraintTop_toTopOf="parent">
@@ -33,34 +35,32 @@
                 <include
                     android:id="@+id/seller_name"
                     layout="@layout/item_auto_complete_text"
-                    app:errorMessage="@{vm.uiSellerName.errorMessage}"
-                    app:hasError="@{vm.uiSellerName.hasError}"
                     app:hint="@{@string/seller_name_hint}"
-                    app:state="@{vm.uiSellerName.state}"
-                    app:title="@{@string/seller_name}" />
+                    app:title="@{@string/seller_name}"
+                    app:uiField="@{vm.uiSellerName}" />
 
                 <include
                     android:id="@+id/loyalty_card_identifier"
                     layout="@layout/item_edit_text"
                     app:hint="@{@string/loyalty_card_identifier_hint}"
-                    app:state="@{vm.uiLoyaltyCard.state}"
-                    app:title="@{@string/loyalty_card_identifier}" />
+                    app:title="@{@string/loyalty_card_identifier}"
+                    app:uiField="@{vm.uiLoyaltyCard}" />
 
                 <include
                     android:id="@+id/village_name"
                     layout="@layout/item_edit_text"
                     app:drawableEnd="@{R.drawable.ic_down_arrow_24}"
                     app:hint="@{@string/village_hint}"
-                    app:state="@{vm.uiVillage.state}"
-                    app:title="@{@string/village}" />
+                    app:title="@{@string/village}"
+                    app:uiField="@{vm.uiVillage}" />
 
                 <include
                     android:id="@+id/gross_weight"
                     layout="@layout/item_edit_text"
                     app:drawableEnd="@{R.drawable.ic_kilo_24}"
                     app:hint="@{@string/gross_weight_hint}"
-                    app:state="@{vm.uiWeight.state}"
-                    app:title="@{@string/gross_weight}" />
+                    app:title="@{@string/gross_weight}"
+                    app:uiField="@{vm.uiWeight}" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
@@ -76,23 +76,21 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/gross_price_header"
+                style="@style/TextView.Bold.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/dp_20"
                 android:text="@string/gross_price"
-                android:textSize="@dimen/sp_18"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/gross_price_value"
+                style="@style/TextView.Bold.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/dp_20"
                 android:text="@{@string/gross_price_value(vm.uiGrossPrice)}"
-                android:textSize="@dimen/sp_18"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/lorem_ipsum" />
@@ -108,14 +106,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/gross_price_header"
                 tools:text="@string/lorem_ipsum" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/sell_my_product"
+                style="@style/Button.RoundedTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp_20"
                 android:onClick="@{() ->  vm.validateAndSubmit()}"
                 android:text="@string/sell_my_produce"
-                android:textAllCaps="false"
+
                 app:layout_constraintTop_toBottomOf="@+id/applied_loyalty_index" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

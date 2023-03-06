@@ -1,17 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.SellConfirmationFragment">
 
-    <FrameLayout
+    <data>
+
+        <variable
+            name="sellerName"
+            type="String" />
+
+        <variable
+            name="price"
+            type="String" />
+
+        <variable
+            name="weight"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/screen_padding"
+        android:paddingBottom="@dimen/dp_20">
 
-        <TextView
-            android:id="@+id/test"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintBottom_toTopOf="@+id/sell_more_btn"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fruit_logo"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/dp_48"
+                    android:src="@drawable/ic_red_apple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.8" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/thank_you"
+                    style="@style/TextView.Bold.Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_20"
+                    android:text="@{@string/thank_you(sellerName)}"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@+id/fruit_logo"
+                    tools:text="@string/lorem_ipsum" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_20"
+                    android:text="@{@string/please_ensure(price, weight)}"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/sp_18"
+                    app:layout_constraintTop_toBottomOf="@+id/thank_you"
+                    tools:text="@string/lorem_ipsum" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sell_more_btn"
+            style="@style/Button.RoundedTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sell_more"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

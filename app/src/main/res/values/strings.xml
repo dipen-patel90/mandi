@@ -17,7 +17,9 @@
     <string name="sell_my_produce">Sell My Produce</string>
     <string name="gross_price_value">%1$s INR</string>
     <string name="loyalty_index">Applied loyalty index : %1$s</string>
-
+    <string name="thank_you">Thank you %1$s <font color='red'>for</font>  selling your quality produce.</string>
+    <string name="please_ensure">Please ensure you received %1$s INR for %2$s Kg. of your produce.</string>
+    <string name="sell_more">Sell More</string>
 
     <string name="lorem_ipsum">Lorum Ipsum</string>
 

@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mandi.R
 import com.mandi.common.ToolbarConfig
 import com.mandi.databinding.FragmentSellingBinding
+import com.mandi.model.SellMyProduceResponse
 import com.mandi.model.Seller
 import com.mandi.view.base.BaseFragment
 import com.mandi.view.dialog.SingleSelectionBottomSheet
@@ -97,9 +99,25 @@ class SellingFragment : BaseFragment() {
                 sellerName.editText.setAdapter(sellerAdapter)
             }
 
+            collectFlow(viewModel.completeSellResponse) {
+                navigateToSellConfirmationScree(it)
+            }
+
             // Empty collector to trigger calculate 'combine' call
             collectFlow(viewModel.calculate) {}
+            collectFlow(viewModel.validate) {}
         }
     }
     // endregion
+
+    private fun navigateToSellConfirmationScree(sellMyProduceResponse: SellMyProduceResponse) {
+        findNavController().navigate(
+            SellingFragmentDirections.actionSellingFragmentToSellConfirmationFragment(
+                sellMyProduceResponse.sellerName,
+                sellMyProduceResponse.price,
+                sellMyProduceResponse.weight
+            )
+        )
+
+    }
 }

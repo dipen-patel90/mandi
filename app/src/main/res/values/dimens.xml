@@ -8,9 +8,11 @@
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_32">32dp</dimen>
     <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_148">148dp</dimen>
 
 
     <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
 
     <dimen name="screen_padding">@dimen/dp_20</dimen>
     <dimen name="card_corner_radius">@dimen/dp_12</dimen>

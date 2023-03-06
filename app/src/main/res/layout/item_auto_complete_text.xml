@@ -17,16 +17,8 @@
             type="String" />
 
         <variable
-            name="state"
-            type="kotlinx.coroutines.flow.MutableStateFlow&lt;String>" />
-
-        <variable
-            name="hasError"
-            type="Boolean" />
-
-        <variable
-            name="errorMessage"
-            type="String" />
+            name="uiField"
+            type="com.mandi.common.UIField" />
     </data>
 
     <merge>
@@ -48,7 +40,10 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/dp_8"
                     android:text="@{title}"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="italic"
                     tools:text="@string/lorem_ipsum" />
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -58,15 +53,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_12"
                     android:hint="@{hint}"
-                    android:text="@={state}"
+                    android:text="@={uiField.state}"
                     tools:hint="@string/lorem_ipsum" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{errorMessage}"
+                    android:text="@{uiField.errorMessage}"
                     android:textColor="@color/error_red"
-                    android:visibility="@{hasError ? View.VISIBLE : View.GONE}"
+                    android:visibility="@{uiField.hasError ? View.VISIBLE : View.GONE}"
                     tools:text="@string/lorem_ipsum" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>

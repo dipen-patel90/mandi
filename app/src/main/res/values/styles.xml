@@ -42,4 +42,21 @@
         <item name="cornerSizeBottomRight">@dimen/dp_0</item>
         <item name="cornerSizeBottomLeft">@dimen/dp_0</item>
     </style>
+
+    <style name="Button.RoundedTop" parent="Widget.AppCompat.Button">
+        <item name="textAllCaps">false</item>
+        <item name="android:background">@drawable/rounded_top_button_state</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="TextView.Bold.Small" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextView.Bold.Large" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/sp_24</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

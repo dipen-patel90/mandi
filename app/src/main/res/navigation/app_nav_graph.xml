@@ -9,5 +9,29 @@
         android:id="@+id/sellingFragment"
         android:name="com.mandi.view.SellingFragment"
         android:label="fragment_selling"
-        tools:layout="@layout/fragment_selling" />
+        tools:layout="@layout/fragment_selling" >
+        <action
+            android:id="@+id/action_sellingFragment_to_sellConfirmationFragment"
+            app:destination="@id/sellConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellConfirmationFragment"
+        android:name="com.mandi.view.SellConfirmationFragment"
+        android:label="fragment_sell_confirmation"
+        tools:layout="@layout/fragment_sell_confirmation" >
+        <argument
+            android:name="sellerName"
+            app:argType="string" />
+        <argument
+            android:name="price"
+            app:argType="string" />
+        <argument
+            android:name="weight"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_sellConfirmationFragment_to_sellingFragment"
+            app:destination="@id/sellingFragment"
+            app:popUpTo="@id/sellingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
